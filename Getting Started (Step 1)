@@ -1,0 +1,15 @@
+git clone https://github.com/AlexEMG/DeepLabCut.git).
+cd C:\Users\YourUserName\Desktop\DeepLabCut\conda-environments
+conda env create -f DLC-CPU.yaml
+source/conda activate nameoftheenv
+pip install --upgrade deeplabcut
+import deeplabcut
+ipython
+import deeplabcut
+ deeplabcut.create_new_project(‘Name of the project’,‘Name of the experimenter’,
+[‘Full path of video 1’,‘Full path of video2’,‘Full path of video3’],
+working_directory=‘Full path of the working directory’,copy_videos=True/False)
+ deeplabcut.add_new_videos(‘Full path of the project configuration file*’,[‘full path of
+video 4’, ‘full path of video 5’],copy_videos=True/False)
+deeplabcut.extract_frames(config_path,‘automatic/manual’,‘uniform/kmeans’)
+deeplabcut.label_frames(config_path)
