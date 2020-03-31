@@ -1,0 +1,18 @@
+!pip install deeplabcut
+from google.colab import drive
+
+drive.mount('/content/drive')
+%cd /content/drive/My Drive/TrialFolder4
+import os
+os.environ["DLClight"]="True"
+os.environ["Colab"]="True"
+import tensorflow as tf
+import deeplabcut
+import pandas as pd
+from pandas_datareader import data, wb
+path_config_file = '/content/drive/My Drive/TrialFolder4/config.yaml' 
+deeplabcut.create_training_dataset(path_config_file,num_shuffles=1)
+deeplabcut.train_network(path_config_file,maxiters=10000,displayiters=10)
+deeplabcut.evaluate_network(path_config_file,plotting=True)
+deeplabcut.analyze_videos(path_config_file,['/content/drive/My Drive/TrialFolder4/videos/Test7PART4.mp4'],save_as_csv=True,videotype='.mp4')
+deeplabcut.create_labeled_video(path_config_file,['/content/drive/My Drive/TrialFolder4/videos/Test7PART1.mp4'],)
