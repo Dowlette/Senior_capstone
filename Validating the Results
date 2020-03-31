@@ -1,0 +1,40 @@
+# -*- coding: utf-8 -*-
+"""
+Spyder Editor
+
+This is a temporary script file.
+"""
+import numpy as np
+import math
+import pandas as pd 
+
+def Euclidean_distance_comparison(x_pred,y_pred,x_true,y_true):
+        euc_dist=math.sqrt((((x_pred-x_true)**2) + ((x_pred-x_true)**2)))
+        return euc_dist
+
+prediction_dir='/Users/dowlettealameldin/exp/1ratDepth-trial-2019-11-12/1ratDepthDLC_resnet50_1ratDepthNov12shuffle1_10000.csv'
+ground_truth_dir='/Users/dowlettealameldin/exp/1ratDepth-trial-2019-11-12/CollectedData_trial.csv'
+
+ground_truth_data = pd.read_csv(ground_truth_dir,usecols=range(1,21))
+
+columns=[]
+for i in range(0,31):
+    if i%3!=0:
+        columns.append(i)
+frames=[0,765,1308,1952,2032,2196,2397,2600,2791,2894,3032,3477,3595,3826,4351,4664,5207,5299,5463,5806,6248,6631,7004,7159,7390,7547,7618,7678,7689,7864,7875,8048,8328,8478,8633,8822,8847,8858,9151,9338,9567,9592]
+prediction_data=pd.read_csv(prediction_dir,usecols=columns)
+size=(len(frames),10)
+results=np.zeros(size)
+for j in range(0,len(frames)):
+    for i in range(0,10):
+        x=prediction_data.iat[frames[j]+2,i]
+        y=prediction_data.iat[frames[j]+2,i+1]
+        x_true=ground_truth_data.iat[j+2,i]
+        y_true=ground_truth_data.iat[j+2,i+1]
+        results[j,i]=Euclidean_distance_comparison(float(x),float(y),float(x_true),float(y_true))
+final_average_results=[]
+for i in range(0,10):
+    array=results[:,i]
+    new=array[np.logical_not(np.isnan(array))]
+    final_average_results.append(np.mean(new))
+    print(final_average_results)
