@@ -1,0 +1,12 @@
+1. Download anaconda (Simply download the appropriate files here: https://www.anaconda.com/distribution/)
+2. Either go to www.deeplabcut.org (at the bottom of the page) to download the correct environment file: or download or git clone this repo (in the terminal/cmd program, while in a folder you wish to place DeepLabCut type git clone https://github.com/AlexEMG/DeepLabCut.git).
+3. Now, always in Terminal (or Command Prompt), go to the folder named conda-environments using the command "cd" (which stands for change directory). For example, if you downloaded or cloned the repo onto your Desktop, the command may look like: 
+    >cd C:\Users\YourUserName\Desktop\DeepLabCut\conda-environments
+4. Now, open the program terminal or cmd where you placed the file (i.e. cd conda-environments) and then type: 
+    >conda env create -f  DLC-CPU.yaml
+5. You can now use this environment from anywhere on your computer (i.e. no need to go back into the conda- folder). Just enter your environment by running:
+For Mac: > source/conda activate nameoftheenv (i.e. on your Mac: conda activate DLC-CPU)
+For Windows: > activate nameoftheenv (i.e. activate DLC-GPU)
+For more information visit: https://github.com/AlexEMG/DeepLabCut/blob/master/conda-environments/README.md, https://github.com/AlexEMG/DeepLabCut/blob/master/docs/installation.md, and http://www.mousemotorlab.org/deeplabcut
+
+
